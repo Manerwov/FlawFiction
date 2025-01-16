@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>FlawFiction Band</title>
+    <link rel="stylesheet" href="CSS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        section {
+            padding: 20px;
+        }
+        .band-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FlawFiction</h1>
+        <p>Velkommen til vores officielle hjemmeside!</p>
+    </header>
+    <nav>
+        <a href="#about">Om Os</a>
+        <a href="#music">Musik</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Galleri</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
+    <section id="about">
+        <h2>Om Os</h2>
+        <p>FlawFiction er et band, der leverer dynamisk og energisk musik. Vi elsker at spille live og skabe uforglemmelige oplevelser for vores fans.</p>
+        <img class="band-photo" src="path-to-your-band-photo.jpg" alt="FlawFiction Band">
+    </section>
+    <section id="music">
+        <h2>Musik</h2>
+        <p>Vores nyeste album er nu tilgængeligt på alle streamingtjenester. Hør det nu!</p>
+    </section>
+    <section id="events">
+        <h2>Events</h2>
+        <p>Tjek vores kommende koncerter og events. Vi glæder os til at se dig!</p>
+    </section>
+    <section id="gallery">
+        <h2>Galleri</h2>
+        <p>Se billeder fra vores koncerter og backstage moments.</p>
+    </section>
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <p>Har du spørgsmål eller ønsker at booke os? Kontakt os via email på info@flawfiction.dk.</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 FlawFiction - Alle rettigheder forbeholdes.</p>
+        <p>Følg os på <a href="https://www.facebook.com/FlawFiction" target="_blank" style="color: white;">Facebook</a>, <a href="https://www.youtube.com/@flawfiction7309/featured" target="_blank" style="color: white;">YouTube</a>, og <a href="https://www.instagram.com/FlawFiction" target="_blank" style="color: white;">Instagram</a>.</p>
+    </footer>
+</body>
+</html>
