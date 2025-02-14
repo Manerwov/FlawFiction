@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>FlawFiction.dk - Galleri</title>
+    <link rel="stylesheet" href="CSS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .event {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .event h3 {
+            margin-bottom: 10px;
+        }
+
+        .gallery-container img {
+            weight: 50px;
+            max-width: 20%;
+            height: auto;
+            cursor: pointer;
+            flex: 1 0 calc(33.333% - 10px);
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container img {
+                flex: 1 0 calc(50% - 10px);
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .download-link {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" style="text-decoration: none; color: white;"></a>
+        </div>
+        <div class="section header-title">
+            <a href="index.html" style="text-decoration: none; color: white;">
+                <h1 class="tight-line">FlawFiction</h1>
+                <p>Velkommen til vores officielle hjemmeside!</p>
+            </a>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Forside</a>
+        <a href="about.html">Om Os</a>
+        <a href="music.html">Musik</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Galleri</a>
+        <a href="store.html">Butik</a>
+        <a href="contact.html">Kontakt</a>
+    </nav>
+
+    <section>
+        <h2>Galleri</h2>
+        <p>Her er billeder fra vores forskellige koncerter og events.</p>
+        <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billede.jpg" alt="FlawFiction Banner">
+
+        <div class="event">
+            <h3 onclick="toggleEvent(this)">Event 1</h3>
+            <div class="gallery-container">
+                <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede1.jpg.avif" alt="Event 1 Billede 1" onclick="openModal(this)">
+                <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede2.jpg.avif" alt="Event 1 Billede 2" onclick="openModal(this)">
+                <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede3.jpg" alt="Event 1 Billede 3" onclick="openModal(this)">
+                <img class="responsive-img hidden" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede4.jpg" alt="Event 1 Billede 4" onclick="openModal(this)">
+                <img class="responsive-img hidden" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede5.jpg" alt="Event 1 Billede 5" onclick="openModal(this)">
+                <!-- Tilføj flere billeder her -->
+            </div>
+            <button onclick="showAllImages(this)">Vis alle billeder</button>
+        </div>
+
+        <div class="event">
+            <h3 onclick="toggleEvent(this)">Event 2</h3>
+            <div class="gallery-container">
+                <img class="responsive-img" src="images/event2/image1.jpg" alt="Event 2 Billede 1" onclick="openModal(this)">
+                <img class="responsive-img" src="images/event2/image2.jpg" alt="Event 2 Billede 2" onclick="openModal(this)">
+                <img class="responsive-img" src="images/event2/image3.jpg" alt="Event 2 Billede 3" onclick="openModal(this)">
+                <img class="responsive-img hidden" src="images/event2/image3.jpg" alt="Event 2 Billede 4" onclick="openModal(this)">
+                <!-- Tilføj flere billeder her -->
+            </div>
+            <button onclick="showAllImages(this)">Vis alle billeder</button>
+        </div>
+
+        <!-- Tilføj flere events her -->
+    </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="">
+            <a id="downloadLink" class="download-link" href="" download>Download</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
+            <ul class="social-media-links">
+                <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                <li><a href="https://www.youtube.com/@flawfiction7309/featured" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                <li><a href="https://www.instagram.com/FlawFiction" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+    function openModal(imgElement) {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        var downloadLink = document.getElementById("downloadLink");
+        modal.style.display = "flex";
+        modalImg.src = imgElement.src;
+        downloadLink.href = imgElement.src;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
+    function showAllImages(button) {
+        var images = button.previousElementSibling.getElementsByClassName("responsive-img hidden");
+        for (var i = 0; i < images.length; i++) {
+            images[i].classList.remove("hidden");
+        }
+        button.style.display = "none";
+    }
+
+    function toggleEvent(element) {
+        var galleryContainer = element.nextElementSibling;
+        var button = galleryContainer.nextElementSibling;
+        var images = galleryContainer.getElementsByClassName("responsive-img");
+
+        for (var i = 0; i < images.length; i++) {
+            // Only toggle hidden class for images beyond the first 3
+            if (i >= 3) {
+                images[i].classList.toggle("hidden");
+            }
+        }
+
+        button.classList.toggle("hidden");
+    }
+</script>
+<script src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\java.js"></script>
+</body>
+</html>
