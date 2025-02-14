@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>FlawFiction.dk</title>
+    <link rel="stylesheet" href="CSS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .video {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .video img {
+            display: block;
+            margin: 0 auto 10px;
+            width: 100%;
+            height: auto;
+            max-width: 450px;
+        }
+        .feeds-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .feed {
+            flex: 1 1 45%;
+            margin: 10px;
+            min-width: 300px;
+        }
+    </style>
+    <script>
+        function loadFacebookFeed() {
+            var accessToken = 'YOUR_ACCESS_TOKEN';
+            var pageId = 'YOUR_PAGE_ID';
+            var url = `https://graph.facebook.com/${pageId}/posts?access_token=${accessToken}&limit=3`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    var feed = document.getElementById('facebook-feed');
+                    feed.innerHTML = '';
+                    data.data.forEach(post => {
+                        if (post.message) {
+                            var postElement = document.createElement('div');
+                            postElement.classList.add('post');
+                            postElement.innerHTML = `<p>${post.message}</p>`;
+                            feed.appendChild(postElement);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('facebook-feed').innerHTML = 'Error loading feed: ' + error.message;
+                });
+        }
+
+        function loadYouTubeFeed() {
+            var apiKey = 'xxxxx';
+            var channelId = 'xxxxx';
+            var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        throw new Error('API Error: ' + data.error.message);
+                    }
+                    var feed = document.getElementById('youtube-feed');
+                    feed.innerHTML = '';
+                    data.items.forEach(item => {
+                        if (item.id.kind === 'youtube#video') {
+                            var videoId = item.id.videoId;
+                            var title = item.snippet.title;
+                            var description = item.snippet.description;
+                            var thumbnail = item.snippet.thumbnails.high.url;
+                            var videoElement = document.createElement('div');
+                            videoElement.classList.add('video');
+                            videoElement.innerHTML = `
+                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
+                                    <img src="${thumbnail}" alt="${title}">
+                                    <p>${title}</p>
+                                </a>
+                                <p>${description.substring(0, 100)}...</p>
+                            `;
+                            feed.appendChild(videoElement);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
+                });
+        }
+    </script>
+</head>
+<body onload="loadYouTubeFeed(); loadFacebookFeed();">
+    <header>
+        <div class="header-container">
+            <a href="index.html" style="text-decoration: none; color: white;"></a>
+        </div>
+        <div class="section header-title">
+            <a href="index.html" style="text-decoration: none; color: white;">
+                <h1 class="tight-line">FlawFiction</h1>
+                <p>Velkommen til vores officielle hjemmeside!</p>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </header>
+
+    <nav>
+        <a href="index.html">Forside</a>
+        <a href="about.html">Om Os</a>
+        <a href="music.html">Musik</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Galleri</a>
+        <a href="store.html">Butik</a>
+        <a href="contact.html">Kontakt</a>
+    </nav>
+
+    <section>
+    <h2>Forside</h2>
+        <p>Velkommen til FlawFictions officielle hjemmeside. Følg med i vores nyeste opdateringer og nyheder.</p>
+        <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billede.jpg" alt="FlawFiction Banner">
+    </section>
+
+    <section class="feeds-container">
+        <div class="feed">
+            <h1>Facebook</h1>
+            <div id="facebook-feed">Loading...</div>
+        </div>
+        <div class="feed">
+            <h1>YouTube</h1>
+            <div id="youtube-feed">Loading...</div>
+        </div>
+           </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
+            <ul class="social-media-links">
+                <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                <li><a href="https://www.youtube.com/@flawfiction7309/featured" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+                <li><a href="https://www.instagram.com/FlawFiction" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            </ul>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </footer>
+</body>
+</html>
