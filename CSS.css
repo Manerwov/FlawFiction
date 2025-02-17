@@ -25,7 +25,7 @@ header {
 
 header img {
   width: 100%;
-  max-width: 10000px; /* Juster til den maksimale bredde du ønsker */
+  max-width: 100000px; /* Juster til den maksimale bredde du ønsker */
   height: auto; /* Bevar billedets proportioner */
   object-fit: cover; /* Sikrer, at billedet dækker containeren uden at forvride */
 }
@@ -51,7 +51,7 @@ header img {
 }
 .section img {
   width: 100%;
-  max-width: 10000px; /* Juster til den maksimale bredde du ønsker */
+  max-width: 100000px; /* Juster til den maksimale bredde du ønsker */
   height: auto; /* Bevar billedets proportioner */
   object-fit: cover; /* Sikrer, at billedet dækker containeren uden at forvride */
 }
@@ -132,7 +132,7 @@ footer .social-media-links li a i {
 /* Tilføj responsiv styling til billedet i sektionen */
 .responsive-img {
   width: 100%;
-  max-width: 10000px; /* Juster til den maksimale bredde du ønsker */
+  max-width: 100000px; /* Juster til den maksimale bredde du ønsker */
   height: auto; /* Bevar billedets proportioner */
   object-fit: cover; /* Sikrer, at billedet dækker containeren uden at forvride */
 }
