@@ -49,6 +49,12 @@ header img {
   text-align: center; /* Centrerer sektionen */
   position: relative;
 }
+.section img {
+  width: 100%;
+  max-width: 10000px; /* Juster til den maksimale bredde du ønsker */
+  height: auto; /* Bevar billedets proportioner */
+  object-fit: cover; /* Sikrer, at billedet dækker containeren uden at forvride */
+}
 
 nav ul.social-media-links {
   list-style: none;
