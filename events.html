@@ -60,6 +60,44 @@
         <!-- Tilføj event kalender her -->
     </section>
 
+    <section>
+    <h2>Events</h2>
+    <p>Se vores kommende koncerter og events.</p>
+    <div id="event-calendar"></div>
+</section>
+
+<script>
+    const events = [
+        { name: "Koncert i København", date: "2025-03-10", time: "20:00", description: "Fantastisk koncert i hjertet af København." },
+        { name: "Musikfestival i Aarhus", date: "2025-04-15", time: "18:00", description: "Kom og vær med til en uforglemmelig musikfestival." },
+        { name: "Sommerfest i Odense", date: "2025-06-20", time: "16:00", description: "Sommerfest med live musik og god stemning." }
+    ];
+
+    const calendar = document.getElementById('event-calendar');
+    events.forEach(event => {
+        const eventElement = document.createElement('div');
+        eventElement.classList.add('event');
+
+        const eventName = document.createElement('h3');
+        eventName.textContent = event.name;
+        eventElement.appendChild(eventName);
+
+        const eventDate = document.createElement('p');
+        eventDate.textContent = `Dato: ${event.date}`;
+        eventElement.appendChild(eventDate);
+
+        const eventTime = document.createElement('p');
+        eventTime.textContent = `Tid: ${event.time}`;
+        eventElement.appendChild(eventTime);
+
+        const eventDescription = document.createElement('p');
+        eventDescription.textContent = event.description;
+        eventElement.appendChild(eventDescription);
+
+        calendar.appendChild(eventElement);
+    });
+</script>
+
     <footer>
         <div class="footer-container">
             <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
