@@ -108,43 +108,15 @@
     <section>
         <h2>Galleri</h2>
         <p>Her er billeder fra vores forskellige koncerter og events.</p>
-        <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billede.jpg" alt="FlawFiction Banner">
-
-        <div class="event">
-            <h3 onclick="toggleEvent(this)">Event 1</h3>
-            <div class="gallery-container">
-                <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede1.jpg.avif" alt="Event 1 Billede 1" onclick="openModal(this)">
-                <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede2.jpg.avif" alt="Event 1 Billede 2" onclick="openModal(this)">
-                <img class="responsive-img" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede3.jpg" alt="Event 1 Billede 3" onclick="openModal(this)">
-                <img class="responsive-img hidden" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede4.jpg" alt="Event 1 Billede 4" onclick="openModal(this)">
-                <img class="responsive-img hidden" src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\billeder\knocert1\billede5.jpg" alt="Event 1 Billede 5" onclick="openModal(this)">
-                <!-- Tilføj flere billeder her -->
-            </div>
-            <button onclick="showAllImages(this)">Vis alle billeder</button>
-        </div>
-
-        <div class="event">
-            <h3 onclick="toggleEvent(this)">Event 2</h3>
-            <div class="gallery-container">
-                <img class="responsive-img" src="images/event2/image1.jpg" alt="Event 2 Billede 1" onclick="openModal(this)">
-                <img class="responsive-img" src="images/event2/image2.jpg" alt="Event 2 Billede 2" onclick="openModal(this)">
-                <img class="responsive-img" src="images/event2/image3.jpg" alt="Event 2 Billede 3" onclick="openModal(this)">
-                <img class="responsive-img hidden" src="images/event2/image3.jpg" alt="Event 2 Billede 4" onclick="openModal(this)">
-                <!-- Tilføj flere billeder her -->
-            </div>
-            <button onclick="showAllImages(this)">Vis alle billeder</button>
-        </div>
-
-        <!-- Tilføj flere events her -->
-    </section>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modalImage" src="">
-            <a id="downloadLink" class="download-link" href="" download>Download</a>
-        </div>
-    </div>
+ <div class="photo-gallery">
+  <a href="path/to/image1.jpg" data-lightbox="event-gallery" data-title="Event 1">
+    <img src="path/to/thumbnail1.jpg" alt="Event 1">
+  </a>
+  <a href="path/to/image2.jpg" data-lightbox="event-gallery" data-title="Event 2">
+    <img src="path/to/thumbnail2.jpg" alt="Event 2">
+  </a>
+  <!-- Add more images as needed -->
+</div>
 
     <footer>
         <div class="footer-container">
