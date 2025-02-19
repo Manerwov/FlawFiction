@@ -91,6 +91,20 @@ nav a {
   margin: 0 15px;
   font-weight: bold;
 }
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.photo-gallery a {
+  display: block;
+  width: 30%;
+}
+.photo-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 footer {
   background-color: #333; /* Mørk grå baggrund for footer */
