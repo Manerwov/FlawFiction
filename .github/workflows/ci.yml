@@ -17,9 +17,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Log YOUTUBE_API_KEY
-      run: echo "YOUTUBE_API_KEY: [MASKED]"
-
     - name: Inject API keys
       run: |
         echo "Injecting API keys into HTML file"
