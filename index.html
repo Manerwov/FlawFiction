@@ -30,7 +30,34 @@
             min-width: 300px;
         }
     </style>
-    <script>
+    name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Inject API key
+      run: |
+        echo "Injecting API keys into HTML file"
+        sed -i 's/YOUR_ACCESS_TOKEN/${{ secrets.FACEBOOK_ACCESS_TOKEN }}/g' index.html
+        sed -i 's/YOUR_PAGE_ID/${{ secrets.FACEBOOK_PAGE_ID }}/g' index.html
+        sed -i 's/REPLACE_WITH_API_KEY/${{ secrets.YOUTUBE_API_KEY }}/g' index.html
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+<script>
         function loadFacebookFeed() {
             var accessToken = 'YOUR_ACCESS_TOKEN';
             var pageId = 'YOUR_PAGE_ID';
@@ -61,9 +88,7 @@
             var apiKey = 'REPLACE_WITH_API_KEY';
             var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
             var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
-    
 
-            
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
@@ -96,31 +121,6 @@
                     document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
                 });
         }
-        name: Deploy Website
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Inject API key
-      run: |
-        echo "Injecting API key into HTML file"
-        sed -i 's/REPLACE_WITH_API_KEY/${{ secrets.YOUTUBE_API_KEY }}/g' index.html
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
     </script>
 </head>
 <body onload="loadYouTubeFeed(); loadFacebookFeed();">
@@ -134,7 +134,6 @@ jobs:
                 <p>Velkommen til vores officielle hjemmeside!</p>
             </a>
         </div>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </header>
 
     <nav>
@@ -147,142 +146,23 @@ jobs:
         <a href="contact.html">Kontakt</a>
     </nav>
 
-<section>
-    <h2>Forside</h2>
-    <p>Velkommen til FlawFictions officielle hjemmeside. Følg med i vores nyeste opdateringer og nyheder.</p>
-    <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
-</section>
+    <section>
+        <h2>Forside</h2>
+        <p>Velkommen til FlawFictions officielle hjemmeside. Følg med i vores nyeste opdateringer og nyheder.</p>
+        <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
+    </section>
 
     <section class="feeds-container">
         <div class="feed">
             <h1>Facebook</h1>
-             <script>
-        function loadFacebookFeed() {
-            var accessToken = 'YOUR_ACCESS_TOKEN';
-            var pageId = 'YOUR_PAGE_ID';
-            var url = `https://graph.facebook.com/${pageId}/posts?access_token=${accessToken}&limit=3`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    var feed = document.getElementById('facebook-feed');
-                    feed.innerHTML = '';
-                    data.data.forEach(post => {
-                        if (post.message) {
-                            var postElement = document.createElement('div');
-                            postElement.classList.add('post');
-                            postElement.innerHTML = `<p>${post.message}</p>`;
-                            feed.appendChild(postElement);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('facebook-feed').innerHTML = 'Error loading feed: ' + error.message;
-                });
-        }
-name: Deploy Website
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Inject API key
-      run: |
-        echo "Injecting API key into HTML file"
-        sed -i 's/REPLACE_WITH_API_KEY/${{ secrets.YOUTUBE_API_KEY }}/g' index.html
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-    </script>
             <div id="facebook-feed">Loading...</div>
         </div>
         <div class="feed">
             <h1>YouTube</h1>
-             <script>
-        function loadYouTubeFeed() {
-            var apiKey = 'REPLACE_WITH_API_KEY';
-            var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
-            var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
-    
-
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        throw new Error('API Error: ' + data.error.message);
-                    }
-                    var feed = document.getElementById('youtube-feed');
-                    feed.innerHTML = '';
-                    data.items.forEach(item => {
-                        if (item.id.kind === 'youtube#video') {
-                            var videoId = item.id.videoId;
-                            var title = item.snippet.title;
-                            var description = item.snippet.description;
-                            var thumbnail = item.snippet.thumbnails.high.url;
-                            var videoElement = document.createElement('div');
-                            videoElement.classList.add('video');
-                            videoElement.innerHTML = `
-                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
-                                    <img src="${thumbnail}" alt="${title}">
-                                    <p>${title}</p>
-                                </a>
-                                <p>${description.substring(0, 100)}...</p>
-                            `;
-                            feed.appendChild(videoElement);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
-                });
-        }
-        name: Deploy Website
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Inject API key
-      run: |
-        echo "Injecting API key into HTML file"
-        sed -i 's/REPLACE_WITH_API_KEY/${{ secrets.YOUTUBE_API_KEY }}/g' index.html
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-    </script>
             <div id="youtube-feed">Loading...</div>
         </div>
-           </section>
-
-    <footer>
+    </section>
+<footer>
         <div class="footer-container">
             <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
             <ul class="social-media-links">
@@ -293,5 +173,6 @@ jobs:
         </div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </footer>
+
 </body>
 </html>
