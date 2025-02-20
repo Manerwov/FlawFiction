@@ -30,37 +30,10 @@
             min-width: 300px;
         }
     </style>
-    name: Deploy Website
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Inject API key
-      run: |
-        echo "Injecting API keys into HTML file"
-        sed -i 's/YOUR_ACCESS_TOKEN/${{ secrets.FACEBOOK_ACCESS_TOKEN }}/g' index.html
-        sed -i 's/YOUR_PAGE_ID/${{ secrets.FACEBOOK_PAGE_ID }}/g' index.html
-        sed -i 's/REPLACE_WITH_API_KEY/${{ secrets.YOUTUBE_API_KEY }}/g' index.html
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-<script>
+    <script>
         function loadFacebookFeed() {
-            var accessToken = 'YOUR_ACCESS_TOKEN';
-            var pageId = 'YOUR_PAGE_ID';
+            var accessToken = 'YOUR_ACCESS_TOKEN'; // Skift denne til din faktiske Facebook Access Token
+            var pageId = 'YOUR_PAGE_ID'; // Skift denne til din faktiske Facebook Page ID
             var url = `https://graph.facebook.com/${pageId}/posts?access_token=${accessToken}&limit=3`;
             
             fetch(url)
@@ -85,7 +58,7 @@ jobs:
         }
 
         function loadYouTubeFeed() {
-            var apiKey = 'REPLACE_WITH_API_KEY';
+            var apiKey = 'REPLACE_WITH_API_KEY'; // Skift denne til din faktiske YouTube API-nøgle
             var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
             var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
 
@@ -162,7 +135,8 @@ jobs:
             <div id="youtube-feed">Loading...</div>
         </div>
     </section>
-<footer>
+    
+    <footer>
         <div class="footer-container">
             <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
             <ul class="social-media-links">
@@ -173,6 +147,5 @@ jobs:
         </div>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </footer>
-
 </body>
 </html>
