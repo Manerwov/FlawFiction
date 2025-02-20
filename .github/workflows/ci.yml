@@ -24,6 +24,12 @@ jobs:
         sed -i 's/YOUR_PAGE_ID/${{ secrets.FACEBOOK_PAGE_ID }}/g' index.html
         sed -i 's/REPLACE_WITH_API_KEY/${{ secrets.YOUTUBE_API_KEY }}/g' index.html
 
+    - name: Debug inject
+      run: |
+        grep 'YOUR_ACCESS_TOKEN' index.html || echo "FACEBOOK_ACCESS_TOKEN not found"
+        grep 'YOUR_PAGE_ID' index.html || echo "FACEBOOK_PAGE_ID not found"
+        grep 'REPLACE_WITH_API_KEY' index.html || echo "YOUTUBE_API_KEY not found"
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
