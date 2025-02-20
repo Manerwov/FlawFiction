@@ -11,6 +11,9 @@ jobs:
 
     steps:
     - name: Checkout code
+        permissions:
+      actions: write
+      contents: read
       uses: actions/checkout@v2
 
     - name: Inject API keys
