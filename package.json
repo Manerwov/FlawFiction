@@ -9,6 +9,6 @@
   "author": "Manerwov",
   "license": "MIT",
   "dependencies": {
-    "your-dependencies-here": "latest"
+    "react": "latest"
   }
 }
