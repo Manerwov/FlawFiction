@@ -16,22 +16,23 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Log YOUTUBE_KEY
-      run: echo "YOUTUBE_KEY is set"
 
-  - name: Inject API keys
-  run: |
-    echo "Injecting API keys into HTML file"
-    sed -i 's/FB_KEY/${{ secrets.FB_KEY }}/g' index.html
-    sed -i 's/YOUTUBE_KEY/${{ secrets.YOUTUBE_KEY }}/g' index.html
-    
-  - name: Debug inject
+    - name: Log YOUTUBE_KEY
+      run: echo "YOUTUBE_KEY: [MASKED]"
+
+    - name: Inject API keys
       run: |
-        grep 'YOUR_ACCESS_TOKEN' index.html || echo "FACEBOOK_ACCESS_TOKEN not found"
+        echo "Injecting API keys into HTML file"
+        sed -i 's/FB_KEY/\${{ secrets.FB_KEY }}/g' index.html
+        sed -i 's/YOUTUBE_KEY/\${{ secrets.YOUTUBE_KEY }}/g' index.html
+
+    - name: Debug inject
+      run: |
+        grep 'FB_KEY' index.html || echo "FACEBOOK_ACCESS_TOKEN not found"
         grep 'YOUTUBE_KEY' index.html || echo "YOUTUBE_API_KEY not found"
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: \${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
