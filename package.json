@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "deploy": "gh-pages -d build"
+  }
+}
+{
   "name": "flawfiction",
   "version": "1.0.0",
   "description": "FlawFiction project",
