@@ -9,6 +9,8 @@
   "author": "Manerwov",
   "license": "MIT",
   "dependencies": {
-    "react": "latest"
+    "gatsby": "^4.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   }
 }
