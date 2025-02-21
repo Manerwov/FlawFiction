@@ -26,10 +26,6 @@ jobs:
         sed -i 's/FB_KEY/${{ secrets.FB_KEY }}/g' index.html
         sed -i 's/YOUTUBE_KEY/${{ secrets.YOUTUBE_KEY }}/g' index.html
 
-    - name: Debug inject
-      run: |
-        grep 'FB_KEY' index.html || echo "FB_KEY not found"
-        grep 'YOUTUBE_KEY' index.html || echo "YOUTUBE_KEY not found"
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
