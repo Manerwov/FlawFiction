@@ -32,8 +32,8 @@
     </style>
     <script>
         function loadFacebookFeed() {
-            var accessToken = 'YOUR_ACCESS_TOKEN'; // Skift denne til din faktiske Facebook Access Token
-            var pageId = 'YOUR_PAGE_ID'; // Skift denne til din faktiske Facebook Page ID
+            var accessToken = 'FB_KEY';
+            var pageId = '1392316467533590';
             var url = `https://graph.facebook.com/${pageId}/posts?access_token=${accessToken}&limit=3`;
             
             fetch(url)
@@ -58,7 +58,7 @@
         }
 
         function loadYouTubeFeed() {
-            var apiKey = 'REPLACE_WITH_API_KEY'; // Skift denne til din faktiske YouTube API-nøgle
+            var apiKey = 'YOUTUBE_KEY';
             var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
             var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
 
