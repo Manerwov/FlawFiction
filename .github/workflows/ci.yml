@@ -16,9 +16,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-- name: Log YOUTUBE_KEY
-  run: echo "YOUTUBE_KEY is set"
+    - name: Log YOUTUBE_KEY
+      run: echo "YOUTUBE_KEY is set"
 
     - name: Inject API keys
       run: |
