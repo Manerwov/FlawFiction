@@ -1,11 +1,11 @@
 function loadFacebookFeed() {
-    var accessToken = 'DIN_ACCESS_TOKEN';
-    var pageId = 'DIN_PAGE_ID';
+    var accessToken = 'FB_KEY';
+    var pageId = '1392316467533590';
     var url = `https://graph.facebook.com/${pageId}/posts?access_token=${accessToken}&limit=3`;
 }
 
 function loadYouTubeFeed() {
-            var apiKey = 'REPLACE_WITH_API_KEY';
+            var apiKey = 'YOUTUBE_KEY';
             var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
     var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;  
 }
