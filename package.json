@@ -19,3 +19,8 @@
     "react-dom": "^17.0.0"
   }
 }
+{
+  "scripts": {
+    "deploy": "gh-pages -d build"
+  }
+}
