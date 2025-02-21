@@ -28,8 +28,8 @@ jobs:
 
     - name: Debug inject
       run: |
-        grep 'FB_KEY' index.html || echo "FACEBOOK_ACCESS_TOKEN not found"
-        grep 'YOUTUBE_KEY' index.html || echo "YOUTUBE_API_KEY not found"
+        grep 'FB_KEY' index.html || echo "FB_KEY not found"
+        grep 'YOUTUBE_KEY' index.html || echo "YOUTUBE_KEY not found"
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
