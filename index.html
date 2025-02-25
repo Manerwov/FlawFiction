@@ -57,43 +57,36 @@
                 });
         }
 
-        function loadYouTubeFeed() {
-            var apiKey = 'AIzaSyCj_sp8P4BxHA3wRZ1saSmeVlnUaSDvtxo';
-            var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
-            var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        throw new Error('API Error: ' + data.error.message);
+            function loadYouTubeFeed() {
+        fetch('youtube-feed.json')
+            .then(response => response.json())
+            .then(data => {
+                var feed = document.getElementById('youtube-feed');
+                feed.innerHTML = '';
+                data.items.forEach(item => {
+                    if (item.id.kind === 'youtube#video') {
+                        var videoId = item.id.videoId;
+                        var title = item.snippet.title;
+                        var description = item.snippet.description;
+                        var thumbnail = item.snippet.thumbnails.high.url;
+                        var videoElement = document.createElement('div');
+                        videoElement.classList.add('video');
+                        videoElement.innerHTML = `
+                            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
+                                <img src="${thumbnail}" alt="${title}">
+                                <p>${title}</p>
+                            </a>
+                            <p>${description.substring(0, 100)}...</p>
+                        `;
+                        feed.appendChild(videoElement);
                     }
-                    var feed = document.getElementById('youtube-feed');
-                    feed.innerHTML = '';
-                    data.items.forEach(item => {
-                        if (item.id.kind === 'youtube#video') {
-                            var videoId = item.id.videoId;
-                            var title = item.snippet.title;
-                            var description = item.snippet.description;
-                            var thumbnail = item.snippet.thumbnails.high.url;
-                            var videoElement = document.createElement('div');
-                            videoElement.classList.add('video');
-                            videoElement.innerHTML = `
-                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
-                                    <img src="${thumbnail}" alt="${title}">
-                                    <p>${title}</p>
-                                </a>
-                                <p>${description.substring(0, 100)}...</p>
-                            `;
-                            feed.appendChild(videoElement);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
                 });
-        }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
+            });
+    }
     </script>
 </head>
 <body onload="loadYouTubeFeed(); loadFacebookFeed();">
