@@ -68,7 +68,7 @@ function showAllImages(button) {
 
 function loadYouTubeFeed() {
     var apiKey = process.env.YOUTUBE_API_KEY; // Hent API-nøglen fra environment variabler
-var channelId = 'UCflawfiction7309';
+    var channelId = 'UCflawfiction7309';
     var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=5`;
 
     fetch(url)
@@ -76,24 +76,30 @@ var channelId = 'UCflawfiction7309';
         .then(data => {
             var feed = document.getElementById('youtube-feed');
             feed.innerHTML = '';
-            data.items.forEach(item => {
-                if (item.id.kind === 'youtube#video') {
-                    var videoId = item.id.videoId;
-                    var title = item.snippet.title;
-                    var description = item.snippet.description;
-                    var thumbnail = item.snippet.thumbnails.high.url;
-                    var videoElement = document.createElement('div');
-                    videoElement.classList.add('video');
-                    videoElement.innerHTML = `
-                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
-                            <img src="${thumbnail}" alt="${title}">
-                            <p>${title}</p>
-                        </a>
-                        <p>${description.substring(0, 100)}...</p>
-                    `;
-                    feed.appendChild(videoElement);
-                }
-            });
+
+            if (data.items) {
+                data.items.forEach(item => {
+                    if (item.id.kind === 'youtube#video') {
+                        var videoId = item.id.videoId;
+                        var title = item.snippet.title;
+                        var description = item.snippet.description;
+                        var thumbnail = item.snippet.thumbnails.high.url;
+                        var videoElement = document.createElement('div');
+                        videoElement.classList.add('video');
+                        videoElement.innerHTML = `
+                            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
+                                <img src="${thumbnail}" alt="${title}">
+                                <p>${title}</p>
+                            </a>
+                            <p>${description.substring(0, 100)}...</p>
+                        `;
+                        feed.appendChild(videoElement);
+                    }
+                });
+            } else {
+                console.error('Error: data.items is undefined', data);
+                feed.innerHTML = 'Error loading feed: data.items is undefined';
+            }
         })
         .catch(error => {
             console.error('Error:', error);
