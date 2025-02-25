@@ -138,6 +138,17 @@ function loadYouTubeFeed() {
             var feed = document.getElementById('youtube-feed');
             feed.innerHTML = '';
 
+            fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Log responsen her
+        // Resten af koden
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
+    });
+
             if (data.items) {
                 data.items.forEach(item => {
                     if (item.id.kind === 'youtube#video') {
