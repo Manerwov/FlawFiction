@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "VIDEO_ID_1"
+      },
+      "snippet": {
+        "title": "Video Title 1",
+        "description": "Video Description 1",
+        "thumbnails": {
+          "high": {
+            "url": "https://example.com/thumbnail1.jpg"
+          }
+        }
+      }
+    },
+    {
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "VIDEO_ID_2"
+      },
+      "snippet": {
+        "title": "Video Title 2",
+        "description": "Video Description 2",
+        "thumbnails": {
+          "high": {
+            "url": "https://example.com/thumbnail2.jpg"
+          }
+        }
+      }
+    }
+  ]
+}
