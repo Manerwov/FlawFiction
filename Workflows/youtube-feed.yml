@@ -1,0 +1,25 @@
+name: Fetch YouTube Feed
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Fetch YouTube Feed
+        run: |
+          curl -s "https://www.googleapis.com/youtube/v3/search?key=${{ secrets.YOUTUBE_API_KEY }}&channelId=UCSba7ede1hIWU1YFvw23R-g&part=snippet,id&order=date&maxResults=3" \
+            -o youtube-feed.json
+
+      - name: Commit and push results
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add youtube-feed.json
+          git commit -m 'Update YouTube feed'
+          git push
