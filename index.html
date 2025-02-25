@@ -57,9 +57,18 @@
                 });
         }
 
-           function loadYouTubeFeed() {
-    var apiKey = 'YOUR_API_KEY';
-    var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
+   var apiKey = process.env.YOUTUBE_API_KEY; // Hent API-nøglen fra environment variabler
+var channelId = 'UCflawfiction7309';
+
+function showAllImages(button) {
+    var images = button.previousElementSibling.getElementsByClassName("responsive-img hidden");
+    for (var i = 0; i < images.length; i++) {
+        images[i].classList.remove("hidden");
+    }
+    button.style.display = "none";
+}
+
+function loadYouTubeFeed() {
     var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=5`;
 
     fetch(url)
