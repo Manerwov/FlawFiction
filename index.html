@@ -31,72 +31,56 @@
         }
     </style>
     <script>
-        function loadFacebookFeed() {
-            var accessToken = 'FB_KEY';
-            var pageId = '1392316467533590';
-            var url = `https://graph.facebook.com/${pageId}/posts?access_token=${accessToken}&limit=3`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    var feed = document.getElementById('facebook-feed');
-                    feed.innerHTML = '';
-                    data.data.forEach(post => {
-                        if (post.message) {
-                            var postElement = document.createElement('div');
-                            postElement.classList.add('post');
-                            postElement.innerHTML = `<p>${post.message}</p>`;
-                            feed.appendChild(postElement);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('facebook-feed').innerHTML = 'Error loading feed: ' + error.message;
-                });
-        }
-
         function loadYouTubeFeed() {
-            var apiKey = 'YOUTUBE_KEY';
-            var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
-            var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
+            fetch('YOUTUBE_KEY')
+                .then(response => response.text())
+                .then(apiKey => {
+                    var channelId = 'UCSba7ede1hIWU1YFvw23R-g';
+                    var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=3`;
 
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        throw new Error('API Error: ' + data.error.message);
-                    }
-                    var feed = document.getElementById('youtube-feed');
-                    feed.innerHTML = '';
-                    data.items.forEach(item => {
-                        if (item.id.kind === 'youtube#video') {
-                            var videoId = item.id.videoId;
-                            var title = item.snippet.title;
-                            var description = item.snippet.description;
-                            var thumbnail = item.snippet.thumbnails.high.url;
-                            var videoElement = document.createElement('div');
-                            videoElement.classList.add('video');
-                            videoElement.innerHTML = `
-                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
-                                    <img src="${thumbnail}" alt="${title}">
-                                    <p>${title}</p>
-                                </a>
-                                <p>${description.substring(0, 100)}...</p>
-                            `;
-                            feed.appendChild(videoElement);
-                        }
-                    });
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.error) {
+                                throw new Error('API Error: ' + data.error.message);
+                            }
+                            var feed = document.getElementById('youtube-feed');
+                            feed.innerHTML = '';
+                            data.items.forEach(item => {
+                                if (item.id.kind === 'youtube#video') {
+                                    var videoId = item.id.videoId;
+                                    var title = item.snippet.title;
+                                    var description = item.snippet.description;
+                                    var thumbnail = item.snippet.thumbnails.high.url;
+                                    var videoElement = document.createElement('div');
+                                    videoElement.classList.add('video');
+                                    videoElement.innerHTML = `
+                                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
+                                            <img src="${thumbnail}" alt="${title}">
+                                            <p>${title}</p>
+                                        </a>
+                                        <p>${description.substring(0, 100)}...</p>
+                                    `;
+                                    feed.appendChild(videoElement);
+                                }
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
+                        });
                 })
                 .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
+                    console.error('Error fetching API key:', error);
                 });
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadYouTubeFeed();
+        });
     </script>
 </head>
-<body onload="loadYouTubeFeed(); loadFacebookFeed();">
+<body>
     <header>
         <div class="header-container">
             <a href="index.html" style="text-decoration: none; color: white;"></a>
