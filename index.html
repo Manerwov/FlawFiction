@@ -84,6 +84,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </footer>
     <script>
+const gulp = require('gulp');
+const replace = require('gulp-replace');
+
+// Hent API-nøglen fra miljøvariablerne
+const apiKey = process.env.YOUTUBE_API_KEY;
+
+gulp.task('set-api-key', function() {
+  return gulp.src('index.html')
+    .pipe(replace('process.env.YOUTUBE_API_KEY', `'${apiKey}'`))
+    .pipe(gulp.dest('dist'));
+});
+
+// Kør denne opgave for at erstatte nøglen i HTML-filen
+gulp.task('default', gulp.series('set-api-key'));
+        
         function loadFacebookFeed() {
             var accessToken = 'YOUR_ACCESS_TOKEN';
             var pageId = 'YOUR_PAGE_ID';
