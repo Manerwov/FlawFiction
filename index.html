@@ -120,9 +120,9 @@ function showAllImages(button) {
 }
 
 function loadYouTubeFeed() {
-    var apiKey = process.env.YOUTUBE_API_KEY; // Hent API-nøglen fra environment variabler
+    var apiKey = process.env.YOUTUBE_API_KEY;
 
-    // Tilføj denne kontrol for at se, om API-nøglen er hentet korrekt
+
     if (!apiKey) {
         console.error('API key not found');
         document.getElementById('youtube-feed').innerHTML = 'API key not found';
