@@ -1,0 +1,23 @@
+name: Set YouTube API Key
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  set-api-key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Set environment variable
+        run: echo "YOUTUBE_API_KEY=$YOUTUBE_API_KEY" >> $GITHUB_ENV
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
