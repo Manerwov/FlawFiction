@@ -88,11 +88,11 @@ const gulp = require('gulp');
 const replace = require('gulp-replace');
 
 // Hent API-nøglen fra miljøvariablerne
-const apiKey = process.env.YOUTUBE_API_KEY;
+const apiKey = process.env.YoutubeKey.txt;
 
 gulp.task('set-api-key', function() {
   return gulp.src('index.html')
-    .pipe(replace('process.env.YOUTUBE_API_KEY', `'${apiKey}'`))
+    .pipe(replace('process.env.YoutubeKey.txt', `'${apiKey}'`))
     .pipe(gulp.dest('dist'));
 });
 
@@ -135,7 +135,8 @@ function showAllImages(button) {
 }
 
 function loadYouTubeFeed() {
-    var apiKey = process.env.YOUTUBE_API_KEY;
+    var apiKey =     <input type="file" id=YoutubeKey.txt accept=".txt">;
+    
 
 
     if (!apiKey) {
