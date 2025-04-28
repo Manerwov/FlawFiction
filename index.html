@@ -1,116 +1,87 @@
 <!DOCTYPE html>
- <html lang="da">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>FlawFiction.dk</title>
-     <link rel="stylesheet" href="CSS.css">
-     <style>
-         .video-container {
-             text-align: center;
-             margin-bottom: 20px;
-         }
-         iframe {
-             width: 100%;
-             max-width: 800px;
-             aspect-ratio: 16 / 9;
-             border: none;
-         }
-         .feeds-container {
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: center;
-         }
-         .feed {
-             flex: 1 1 100%;
-             margin: 10px;
-             min-width: 300px;
-         }
-     </style>
- </head>
- 
- <body>
- 
-     <header>
-         <div class="header-container">
-             <a href="index.html" style="text-decoration: none; color: white;"></a>
-         </div>
-         <div class="section header-title">
-             <a href="index.html" style="text-decoration: none; color: white;">
-                 <h1 class="tight-line">FlawFiction</h1>
-                 <p>Velkommen til vores officielle hjemmeside!</p>
-             </a>
-         </div>
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-     </header>
- 
-     <nav>
-         <a href="index.html">Forside</a>
-         <a href="About.html">Om Os</a>
-         <a href="Music.html">Musik</a>
-         <a href="events.html">Events</a>
-         <a href="gallery.html">Galleri</a>
-         <a href="store.html">Butik</a>
-         <a href="contact.html">Kontakt</a>
-     </nav>
- 
-     <section>
-         <h2>   Seneste Opdateringer</h2>
-         <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
-     </section>
- 
- 
-     <section class="feeds-container">
-         <!-- Facebook Feed -->
-         <div class="feed">
-             <h1>Facebook</h1>
- <div id="fb-root"></div>
-             <div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline" 
-                  data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                 <blockquote cite="https://www.facebook.com/flawfiction" class="fb-xfbml-parse-ignore">
-                     <a href="https://www.facebook.com/flawfiction">FlawFiction</a>
-                 </blockquote>
-             </div>
-         </div>
- 
- 
-         <div class="feed">
-             <h2>YouTube</h2>
-             <div id="youtube-feed">Loading...</div>
-         </div>
-     </section>
- 
-     <footer>
-         <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
-         <ul class="social-media-links">
-             <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-             <li><a href="https://www.youtube.com/@flawfiction7309" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
-             <li><a href="https://www.instagram.com/FlawFiction" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-         </ul>
-     </footer>
- 
-     <script>
-         const reqURL = "https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UCSba7ede1hIWU1YFvw23R-g";
- 
-         fetch(reqURL)
-             .then(response => response.json())
-             .then(data => {
-                 let videos = data.items.slice(0, 3);
-                 let html = videos.map(video => {
-                     let videoID = video.link.split("=")[1];
-                     return `
-                         <div class="video-container">
-                             <h3>${video.title}</h3>
-                             <iframe src="https://www.youtube.com/embed/${videoID}" allowfullscreen></iframe>
-                         </div>
-                     `;
-                 }).join("");
-                 document.getElementById("youtube-feed").innerHTML = html;
-             })
-             .catch(error => console.error("Fejl ved hentning af videoer:", error));
- 
- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v22.0"></script>
- 
-     </script>
- 
- </body>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlawFiction.dk</title>
+    <link rel="stylesheet" href="CSS.css">
+    <style>
+        .video-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            border: none;
+        }
+        .feeds-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .feed {
+            flex: 1 1 100%;
+            margin: 10px;
+            min-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>FlawFiction</h1>
+        <p>Velkommen til vores officielle hjemmeside!</p>
+    </header>
+
+    <div id="fb-root"></div> <!-- Flyttet fb-root udenfor feeds-container -->
+
+    <section class="feeds-container">
+        <!-- Facebook Feed -->
+        <div class="feed">
+            <h2>Facebook</h2>
+            <div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline" 
+                 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            </div>
+        </div>
+
+        <!-- YouTube Feed -->
+        <div class="feed">
+            <h2>YouTube</h2>
+            <div id="youtube-feed">Loading...</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
+    </footer>
+
+    <!-- YouTube API Script -->
+    <script>
+        const reqURL = "https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UCSba7ede1hIWU1YFvw23R-g";
+
+        fetch(reqURL)
+            .then(response => response.json())
+            .then(data => {
+                let videos = data.items.slice(0, 3);
+                let html = videos.map(video => {
+                    let videoID = video.link.split("=")[1];
+                    return `
+                        <div class="video-container">
+                            <h3>${video.title}</h3>
+                            <iframe src="https://www.youtube.com/embed/${videoID}" allowfullscreen></iframe>
+                        </div>
+                    `;
+                }).join("");
+                document.getElementById("youtube-feed").innerHTML = html;
+            })
+            .catch(error => console.error("Fejl ved hentning af videoer:", error));
+    </script>
+
+    <!-- Facebook SDK (Placering rettet) -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v22.0"></script>
+
+</body>
+</html>
