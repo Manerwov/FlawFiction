@@ -2,53 +2,37 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>FlawFiction.dk</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlawFiction.dk</title>
+    <link rel="stylesheet" href="CSS.css">
     <style>
-        .video {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+        .video-container {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        .video img {
-            display: block;
-            margin: 0 auto 10px;
+        iframe {
             width: 100%;
-            height: auto;
-            max-width: 450px;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            border: none;
         }
         .feeds-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.feed {
-    flex: 1 1 100%;
-    margin: 10px;
-    min-width: 300px;
-}
-        iframe {
-    width: 100%;
-    max-width: 800px; /* Begræns maksimum bredde */
-    height: auto;
-    aspect-ratio: 16 / 9; /* Bevarer korrekt videoformat */
-}
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .feed {
+            flex: 1 1 100%;
+            margin: 10px;
+            min-width: 300px;
+        }
     </style>
 </head>
+<body>
+
     <header>
-        <div class="header-container">
-            <a href="index.html" style="text-decoration: none; color: white;"></a>
-        </div>
-        <div class="section header-title">
-            <a href="index.html" style="text-decoration: none; color: white;">
-                <h1 class="tight-line">FlawFiction</h1>
-                <p>Velkommen til vores officielle hjemmeside!</p>
-            </a>
-        </div>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <h1>FlawFiction</h1>
+        <p>Velkommen til vores officielle hjemmeside!</p>
     </header>
 
     <nav>
@@ -61,90 +45,29 @@
         <a href="contact.html">Kontakt</a>
     </nav>
 
-<section>
-        <h2>Seneste Opdateringer</h2>
+    <section>
+        <h2>   Seneste Opdateringer</h2>
         <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
     </section>
 
     <section class="feeds-container">
-        <!-- Facebook Feed -->
         <div class="feed">
-            <h1>Facebook</h1>
-            <div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline" 
-                 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/flawfiction" class="fb-xfbml-parse-ignore">
-                    <a href="https://www.facebook.com/flawfiction">FlawFiction</a>
-                </blockquote>
-            </div>
+            <h2>Facebook</h2>
+            <div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline"
+                data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
         </div>
 
-     <h1>YouTube</h1>
-<div id="youtube-feed">Loading...</div>   
-<div id="youtube-feed"></div>
+        <div class="feed">
+            <h2>YouTube</h2>
+            <div id="youtube-feed">Loading...</div>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
-        <ul class="social-media-links">
-            <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-            <li><a href="https://www.youtube.com/@flawfiction7309" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
-            <li><a href="https://www.instagram.com/FlawFiction" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-        </ul>
     </footer>
 
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v22.0"></script>
-
     <script>
-        // API-nøgle - Gem denne sikkert på serveren!
-        const apiKey = 'DIN_API_NØGLE';
-        const channelId = 'UCflawfiction7309';
-
-        function loadYouTubeFeed() {
-            if (!apiKey) {
-                console.error('API key not found');
-                document.getElementById('youtube-feed').innerHTML = 'API key not found';
-                return;
-            }
-
-            const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=5`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    let feed = document.getElementById('youtube-feed');
-                    feed.innerHTML = '';
-
-                    if (data.items) {
-                        data.items.forEach(item => {
-                            if (item.id.kind === 'youtube#video') {
-                                let videoId = item.id.videoId;
-                                let title = item.snippet.title;
-                                let thumbnail = item.snippet.thumbnails.high.url;
-                                
-                                let videoElement = document.createElement('div');
-                                videoElement.classList.add('video');
-                                videoElement.innerHTML = `
-                                    <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
-                                        <img src="${thumbnail}" alt="${title}">
-                                        <p>${title}</p>
-                                    </a>
-                                `;
-                                feed.appendChild(videoElement);
-                            }
-                        });
-                    } else {
-                        console.error('Error: data.items is undefined', data);
-                        feed.innerHTML = 'Error loading feed: data.items is undefined';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
-                });
-        }
-      
-    </script>
-        <script>
         const reqURL = "https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UCSba7ede1hIWU1YFvw23R-g";
 
         fetch(reqURL)
@@ -164,5 +87,6 @@
             })
             .catch(error => console.error("Fejl ved hentning af videoer:", error));
     </script>
+
 </body>
 </html>
