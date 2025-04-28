@@ -21,15 +21,21 @@
             max-width: 450px;
         }
         .feeds-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .feed {
-            flex: 1 1 45%;
-            margin: 10px;
-            min-width: 300px;
-        }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.feed {
+    flex: 1 1 100%;
+    margin: 10px;
+    min-width: 300px;
+}
+        iframe {
+    width: 100%;
+    max-width: 800px; /* Begræns maksimum bredde */
+    height: auto;
+    aspect-ratio: 16 / 9; /* Bevarer korrekt videoformat */
+}
     </style>
 </head>
     <header>
@@ -76,10 +82,10 @@
         <div class="feed">
             <h1>YouTube</h1>
             <div id="youtube-feed">Loading...</div>
-            <iframe width="560" height="315" 
-                src="https://www.youtube.com/embed/videoseries?list=UUflawfiction7309" 
-                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
+<iframe width="100%" height="500" 
+    src="https://www.youtube.com/embed/videoseries?list=UUflawfiction7309" 
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
         </div>
     </section>
 
