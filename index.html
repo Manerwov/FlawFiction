@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>FlawFiction.dk</title>
-    <link rel="stylesheet" href="CSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .video {
             border: 1px solid #ddd;
@@ -22,27 +23,21 @@
         .feeds-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
         }
         .feed {
-            flex: 1 1 45%;
+            flex: 1 1 100%;
             margin: 10px;
             min-width: 300px;
         }
     </style>
 </head>
-<body onload="loadYouTubeFeed(); loadFacebookFeed();">
+<body onload="loadYouTubeFeed();">
     <header>
         <div class="header-container">
-            <a href="index.html" style="text-decoration: none; color: white;"></a>
+            <h1>FlawFiction</h1>
+            <p>Velkommen til vores officielle hjemmeside!</p>
         </div>
-        <div class="section header-title">
-            <a href="index.html" style="text-decoration: none; color: white;">
-                <h1 class="tight-line">FlawFiction</h1>
-                <p>Velkommen til vores officielle hjemmeside!</p>
-            </a>
-        </div>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </header>
 
     <nav>
@@ -56,151 +51,93 @@
     </nav>
 
     <section>
-        <h2>Forside</h2>
-        <p>Velkommen til FlawFictions officielle hjemmeside. Følg med i vores nyeste opdateringer og nyheder.</p>
+        <h2>Seneste Opdateringer</h2>
         <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
     </section>
 
     <section class="feeds-container">
+        <!-- Facebook Feed -->
         <div class="feed">
             <h1>Facebook</h1>
-            <div id="facebook-feed">Loading...</div>
+            <div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline" 
+                 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/flawfiction" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/flawfiction">FlawFiction</a>
+                </blockquote>
+            </div>
         </div>
-<div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/flawfiction" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/flawfiction">FlawFiction</a></blockquote></div>
+
+        <!-- YouTube Feed -->
         <div class="feed">
             <h1>YouTube</h1>
             <div id="youtube-feed">Loading...</div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=https://www.youtube.com/@flawfiction7309" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+            <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/videoseries?list=UUflawfiction7309" 
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
         </div>
     </section>
 
     <footer>
-        <div class="footer-container">
-            <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
-            <ul class="social-media-links">
-                <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                <li><a href="https://www.youtube.com/@flawfiction7309/featured" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
-                <li><a href="https://www.instagram.com/FlawFiction" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-            </ul>
-        </div>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
+        <ul class="social-media-links">
+            <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+            <li><a href="https://www.youtube.com/@flawfiction7309" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+            <li><a href="https://www.instagram.com/FlawFiction" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+        </ul>
     </footer>
 
     <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v22.0"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v22.0"></script>
 
     <script>
-const gulp = require('gulp');
-const replace = require('gulp-replace');
+        // API-nøgle - Gem denne sikkert på serveren!
+        const apiKey = 'DIN_API_NØGLE';
+        const channelId = 'UCflawfiction7309';
 
-// Hent API-nøglen fra miljøvariablerne
-const apiKey = process.env.YoutubeKey.txt;
+        function loadYouTubeFeed() {
+            if (!apiKey) {
+                console.error('API key not found');
+                document.getElementById('youtube-feed').innerHTML = 'API key not found';
+                return;
+            }
 
-gulp.task('set-api-key', function() {
-  return gulp.src('index.html')
-    .pipe(replace('process.env.YoutubeKey.txt', `'${apiKey}'`))
-    .pipe(gulp.dest('dist'));
-});
+            const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=5`;
 
-// Kør denne opgave for at erstatte nøglen i HTML-filen
-gulp.task('default', gulp.series('set-api-key'));
-        
-        function loadFacebookFeed() {
-            var accessToken = 'YOUR_ACCESS_TOKEN';
-            var pageId = 'YOUR_PAGE_ID';
-            var url = `https://graph.facebook.com/${pageId}/posts?access_token=${accessToken}&limit=3`;
-            
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
-                    var feed = document.getElementById('facebook-feed');
+                    let feed = document.getElementById('youtube-feed');
                     feed.innerHTML = '';
-                    data.data.forEach(post => {
-                        if (post.message) {
-                            var postElement = document.createElement('div');
-                            postElement.classList.add('post');
-                            postElement.innerHTML = `<p>${post.message}</p>`;
-                            feed.appendChild(postElement);
-                        }
-                    });
+
+                    if (data.items) {
+                        data.items.forEach(item => {
+                            if (item.id.kind === 'youtube#video') {
+                                let videoId = item.id.videoId;
+                                let title = item.snippet.title;
+                                let thumbnail = item.snippet.thumbnails.high.url;
+                                
+                                let videoElement = document.createElement('div');
+                                videoElement.classList.add('video');
+                                videoElement.innerHTML = `
+                                    <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
+                                        <img src="${thumbnail}" alt="${title}">
+                                        <p>${title}</p>
+                                    </a>
+                                `;
+                                feed.appendChild(videoElement);
+                            }
+                        });
+                    } else {
+                        console.error('Error: data.items is undefined', data);
+                        feed.innerHTML = 'Error loading feed: data.items is undefined';
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    document.getElementById('facebook-feed').innerHTML = 'Error loading feed: ' + error.message;
+                    document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
                 });
         }
-
-
-function showAllImages(button) {
-    var images = button.previousElementSibling.getElementsByClassName("responsive-img hidden");
-    for (var i = 0; i < images.length; i++) {
-        images[i].classList.remove("hidden");
-    }
-    button.style.display = "none";
-}
-
-function loadYouTubeFeed() {
-    var apiKey =     <input type="file" id=YoutubeKey.txt accept=".txt">;
-    
-
-
-    if (!apiKey) {
-        console.error('API key not found');
-        document.getElementById('youtube-feed').innerHTML = 'API key not found';
-        return;
-    }
-
-    var channelId = 'UCflawfiction7309';
-    var url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=5`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            var feed = document.getElementById('youtube-feed');
-            feed.innerHTML = '';
-
-            fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data); // Log responsen her
-        // Resten af koden
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
-    });
-
-            if (data.items) {
-                data.items.forEach(item => {
-                    if (item.id.kind === 'youtube#video') {
-                        var videoId = item.id.videoId;
-                        var title = item.snippet.title;
-                        var description = item.snippet.description;
-                        var thumbnail = item.snippet.thumbnails.high.url;
-                        var videoElement = document.createElement('div');
-                        videoElement.classList.add('video');
-                        videoElement.innerHTML = `
-                            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
-                                <img src="${thumbnail}" alt="${title}">
-                                <p>${title}</p>
-                            </a>
-                            <p>${description.substring(0, 100)}...</p>
-                        `;
-                        feed.appendChild(videoElement);
-                    }
-                });
-            } else {
-                console.error('Error: data.items is undefined', data);
-                feed.innerHTML = 'Error loading feed: data.items is undefined';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
-        });
-}
     </script>
 </body>
 </html>
