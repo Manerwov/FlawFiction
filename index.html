@@ -28,11 +28,20 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>FlawFiction</h1>
-        <p>Velkommen til vores officielle hjemmeside!</p>
+        <div class="header-container">
+            <a href="index.html" style="text-decoration: none; color: white;"></a>
+        </div>
+        <div class="section header-title">
+            <a href="index.html" style="text-decoration: none; color: white;">
+                <h1 class="tight-line">FlawFiction</h1>
+                <p>Velkommen til vores officielle hjemmeside!</p>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </header>
 
     <nav>
@@ -50,12 +59,19 @@
         <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
     </section>
 
+
     <section class="feeds-container">
+        <!-- Facebook Feed -->
         <div class="feed">
-            <h2>Facebook</h2>
-            <div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline"
-                data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+            <h1>Facebook</h1>
+            <div class="fb-page" data-href="https://www.facebook.com/flawfiction" data-tabs="timeline" 
+                 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/flawfiction" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/flawfiction">FlawFiction</a>
+                </blockquote>
+            </div>
         </div>
+        
 
         <div class="feed">
             <h2>YouTube</h2>
@@ -65,6 +81,11 @@
 
     <footer>
         <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
+        <ul class="social-media-links">
+            <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+            <li><a href="https://www.youtube.com/@flawfiction7309" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+            <li><a href="https://www.instagram.com/FlawFiction" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+        </ul>
     </footer>
 
     <script>
