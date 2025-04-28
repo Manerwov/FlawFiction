@@ -21,15 +21,17 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        .feed {
-            flex: 1 1 100%;
-            margin: 10px;
-            min-width: 300px;
-        }
+.feed {
+    flex: 1 1 100%;
+    margin: 10px;
+    min-width: 300px;
+    text-align: center; /* Centrerer indholdet */
+}
         .facebook-container {
     width: 100%; /* Ændr procenten efter behov */
     max-width: 1200px; /* Sæt en maks bredde, hvis nødvendigt */
     margin: 0 auto; /* Centrerer feedet */
+    text-align: center;
 }
     </style>
 </head>
@@ -62,7 +64,7 @@
 
 <section>
         <h2>Seneste Opdateringer</h2>
-        <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 150%; height: auto;">
+        <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
     </section>
 
     <div id="fb-root"></div> <!-- Flyttet fb-root udenfor feeds-container -->
