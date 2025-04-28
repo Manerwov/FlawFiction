@@ -77,7 +77,7 @@
                 </blockquote>
             </div>
         </div>
-
+<div id="youtube-feed"></div>
         <!-- YouTube Feed -->
         <div class="feed">
             <h1>YouTube</h1>
@@ -149,6 +149,27 @@
                     document.getElementById('youtube-feed').innerHTML = 'Error loading feed: ' + error.message;
                 });
         }
+      
+    </script>
+        <script>
+        const reqURL = "https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=UCSba7ede1hIWU1YFvw23R-g";
+
+        fetch(reqURL)
+            .then(response => response.json())
+            .then(data => {
+                let videos = data.items.slice(0, 3);
+                let html = videos.map(video => {
+                    let videoID = video.link.split("=")[1];
+                    return `
+                        <div class="video-container">
+                            <h3>${video.title}</h3>
+                            <iframe src="https://www.youtube.com/embed/${videoID}" allowfullscreen></iframe>
+                        </div>
+                    `;
+                }).join("");
+                document.getElementById("youtube-feed").innerHTML = html;
+            })
+            .catch(error => console.error("Fejl ved hentning af videoer:", error));
     </script>
 </body>
 </html>
