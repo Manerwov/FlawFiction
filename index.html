@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>FlawFiction.dk</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .video {
             border: 1px solid #ddd;
@@ -23,21 +23,26 @@
         .feeds-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: space-between;
         }
         .feed {
-            flex: 1 1 100%;
+            flex: 1 1 45%;
             margin: 10px;
             min-width: 300px;
         }
     </style>
 </head>
-<body onload="loadYouTubeFeed();">
     <header>
         <div class="header-container">
-            <h1>FlawFiction</h1>
-            <p>Velkommen til vores officielle hjemmeside!</p>
+            <a href="index.html" style="text-decoration: none; color: white;"></a>
         </div>
+        <div class="section header-title">
+            <a href="index.html" style="text-decoration: none; color: white;">
+                <h1 class="tight-line">FlawFiction</h1>
+                <p>Velkommen til vores officielle hjemmeside!</p>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </header>
 
     <nav>
@@ -50,7 +55,7 @@
         <a href="contact.html">Kontakt</a>
     </nav>
 
-    <section>
+<section>
         <h2>Seneste Opdateringer</h2>
         <img src="image/billede.jpg" alt="FlawFiction Banner" style="max-width: 100%; height: auto;">
     </section>
