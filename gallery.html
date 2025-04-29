@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="CSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Lightbox CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
     <style>
         .gallery-container {
             display: flex;
@@ -22,63 +27,27 @@
             margin-bottom: 10px;
         }
 
-        .gallery-container img {
-            weight: 50px;
-            max-width: 20%;
-            height: auto;
-            cursor: pointer;
+        .gallery-container a {
             flex: 1 0 calc(33.333% - 10px);
             box-sizing: border-box;
         }
 
+        .gallery-container img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+        }
+
         @media (max-width: 600px) {
-            .gallery-container img {
+            .gallery-container a {
                 flex: 1 0 calc(50% - 10px);
             }
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 80%;
-            max-height: 80%;
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-        }
-
-        .modal-content .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: white;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .download-link {
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -104,20 +73,28 @@
         <a href="store.html">Butik</a>
         <a href="contact.html">Kontakt</a>
     </nav>
-<link href="path/to/lightbox.css" rel="stylesheet">
-<script src="path/to/lightbox.js"></script>
+
+    <!-- GALLERI MED LIGHTBOX -->
     <section>
-        <h2>Galleri</h2>
-        <p>Her er billeder fra vores forskellige koncerter og events.</p>
- <div class="photo-gallery">
-  <a href="path/to/image1.jpg" data-lightbox="event-gallery" data-title="Event 1">
-    <img src="path/to/thumbnail1.jpg" alt="Event 1">
-  </a>
-  <a href="path/to/image2.jpg" data-lightbox="event-gallery" data-title="Event 2">
-    <img src="path/to/thumbnail2.jpg" alt="Event 2">
-  </a>
-  <!-- Add more images as needed -->
-</div>
+        <h2>FlawFiction Galleri</h2>
+        <div class="gallery-container">
+            <a href="image/event1.jpg" data-lightbox="gallery" data-title="Event 1">
+                <img src="image/koncertbilleder/billede1.jpg.avif" alt="Event 1">
+            </a>
+            <a href="image/event2.jpg" data-lightbox="gallery" data-title="Event 2">
+                <img src="image/koncertbilleder/billede2.jpg.avif" alt="Event 2">
+            </a>
+            <a href="image/event3.jpg" data-lightbox="gallery" data-title="Event 3">
+                <img src="image/koncertbilleder/billede3.jpg" alt="Event 3">
+            </a>
+                        <a href="image/event3.jpg" data-lightbox="gallery" data-title="Event 3">
+                <img src="image/koncertbilleder/billede4.jpg" alt="Event 3">
+            </a>
+                        <a href="image/event3.jpg" data-lightbox="gallery" data-title="Event 3">
+                <img src="image/koncertbilleder/billede5.jpg" alt="Event 3">
+            </a>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-container">
@@ -129,44 +106,5 @@
             </ul>
         </div>
     </footer>
-    <script>
-    function openModal(imgElement) {
-        var modal = document.getElementById("myModal");
-        var modalImg = document.getElementById("modalImage");
-        var downloadLink = document.getElementById("downloadLink");
-        modal.style.display = "flex";
-        modalImg.src = imgElement.src;
-        downloadLink.href = imgElement.src;
-    }
-
-    function closeModal() {
-        var modal = document.getElementById("myModal");
-        modal.style.display = "none";
-    }
-
-    function showAllImages(button) {
-        var images = button.previousElementSibling.getElementsByClassName("responsive-img hidden");
-        for (var i = 0; i < images.length; i++) {
-            images[i].classList.remove("hidden");
-        }
-        button.style.display = "none";
-    }
-
-    function toggleEvent(element) {
-        var galleryContainer = element.nextElementSibling;
-        var button = galleryContainer.nextElementSibling;
-        var images = galleryContainer.getElementsByClassName("responsive-img");
-
-        for (var i = 0; i < images.length; i++) {
-            // Only toggle hidden class for images beyond the first 3
-            if (i >= 3) {
-                images[i].classList.toggle("hidden");
-            }
-        }
-
-        button.classList.toggle("hidden");
-    }
-</script>
-<script src="C:\Users\moki\OneDrive - H. Lundbeck A S\Documents\Morten\Privat\Hjemmeside\java.js"></script>
 </body>
 </html>
