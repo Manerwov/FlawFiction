@@ -60,37 +60,7 @@
     <div id="event-calendar"></div>
 </section>
 
-<script>
-    const events = [
-        { name: "Koncert test", date: "2025-03-10", time: "20:00", description: "FlawFiction rocker til xxx" },
-        { name: "Koncert test2", date: "2025-04-15", time: "18:00", description: "Kom og vær med til en uforglemmelig musikoplevelse med FlawFiction" },
-        { name: "Koncert test3", date: "2025-06-20", time: "16:00", description: "Fisk for Flaw ;-)" }
-    ];
-
-    const calendar = document.getElementById('event-calendar');
-    events.forEach(event => {
-        const eventElement = document.createElement('div');
-        eventElement.classList.add('event');
-
-        const eventName = document.createElement('h3');
-        eventName.textContent = event.name;
-        eventElement.appendChild(eventName);
-
-        const eventDate = document.createElement('p');
-        eventDate.textContent = `Dato: ${event.date}`;
-        eventElement.appendChild(eventDate);
-
-        const eventTime = document.createElement('p');
-        eventTime.textContent = `Tid: ${event.time}`;
-        eventElement.appendChild(eventTime);
-
-        const eventDescription = document.createElement('p');
-        eventDescription.textContent = event.description;
-        eventElement.appendChild(eventDescription);
-
-        calendar.appendChild(eventElement);
-    });
-</script>
+<iframe src="https://calendar.google.com/calendar/embed?src=8284b68444a7d3d4978148d7238f408d966d522ec950693630acbeb80dc3ef3f%40group.calendar.google.com&ctz=Europe%2FCopenhagen" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
     <footer>
         <div class="footer-container">
