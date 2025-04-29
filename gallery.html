@@ -49,14 +49,17 @@
                 flex: 1 0 calc(50% - 10px);
             }
         }
-        .lightbox .lb-close {
-    font-size: 30px;
-    color: white;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-}
+
+        /* Lukke-knap styling */
+        .lb-close {
+            font-size: 35px;
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            z-index: 1001;
+        }
     </style>
 </head>
 <body>
@@ -86,22 +89,21 @@
     <section>
         <h2>FlawFiction Galleri</h2>
         <div class="gallery-container">
-<a href="image/koncertbilleder/billede1.jpg.avif" data-lightbox="gallery" data-title="Event 1">
-    <img src="image/koncertbilleder/billede1.jpg.avif" alt="Event 1">
-</a>
-<a href="image/koncertbilleder/billede2.jpg.avif" data-lightbox="gallery" data-title="Event 2">
-    <img src="image/koncertbilleder/billede2.jpg.avif" alt="Event 2">
-</a>
-<a href="image/koncertbilleder/billede3.jpg" data-lightbox="gallery" data-title="Event 3">
-    <img src="image/koncertbilleder/billede3.jpg" alt="Event 3">
-</a>
-<a href="image/koncertbilleder/billede4.jpg" data-lightbox="gallery" data-title="Event 4">
-    <img src="image/koncertbilleder/billede4.jpg" alt="Event 4">
-</a>
-<a href="image/koncertbilleder/billede5.jpg" data-lightbox="gallery" data-title="Event 5">
-    <img src="image/koncertbilleder/billede5.jpg" alt="Event 5">
-</a>
-
+            <a href="image/koncertbilleder/billede1.jpg.avif" data-lightbox="gallery" data-title="Event 1">
+                <img src="image/koncertbilleder/billede1.jpg.avif" alt="Event 1">
+            </a>
+            <a href="image/koncertbilleder/billede2.jpg.avif" data-lightbox="gallery" data-title="Event 2">
+                <img src="image/koncertbilleder/billede2.jpg.avif" alt="Event 2">
+            </a>
+            <a href="image/koncertbilleder/billede3.jpg" data-lightbox="gallery" data-title="Event 3">
+                <img src="image/koncertbilleder/billede3.jpg" alt="Event 3">
+            </a>
+            <a href="image/koncertbilleder/billede4.jpg" data-lightbox="gallery" data-title="Event 4">
+                <img src="image/koncertbilleder/billede4.jpg" alt="Event 4">
+            </a>
+            <a href="image/koncertbilleder/billede5.jpg" data-lightbox="gallery" data-title="Event 5">
+                <img src="image/koncertbilleder/billede5.jpg" alt="Event 5">
+            </a>
         </div>
     </section>
 
@@ -115,5 +117,21 @@
             </ul>
         </div>
     </footer>
+
+    <!-- Lightbox JavaScript Config -->
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'disableScrolling': true
+        });
+
+        // Luk Lightbox når brugeren klikker udenfor billedet
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('lightboxOverlay')) {
+                lightbox.end();
+            }
+        });
+    </script>
 </body>
 </html>
