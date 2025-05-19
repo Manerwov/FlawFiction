@@ -49,27 +49,13 @@
                 flex: 1 0 calc(50% - 10px);
             }
         }
-
-        /* Lukke-knap styling */
-        .lb-close {
-            font-size: 35px;
-            color: white;
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            cursor: pointer;
-            z-index: 1001;
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <a href="index.html" style="text-decoration: none; color: white;"></a>
-        </div>
-        <div class="section header-title">
             <a href="index.html" style="text-decoration: none; color: white;">
-                <h1 class="tight-line">FlawFiction</h1>
+                <h1>FlawFiction</h1>
                 <p>Velkommen til vores officielle hjemmeside!</p>
             </a>
         </div>
@@ -85,31 +71,50 @@
         <a href="contact.html">Kontakt</a>
     </nav>
 
-    <!-- GALLERI MED LIGHTBOX -->
+    <!-- GALLERI MED ALBUMMER -->
     <section>
         <h2>FlawFiction Galleri</h2>
-        <div class="gallery-container">
-            <a href="image/koncertbilleder/billede1.jpg.avif" data-lightbox="gallery" data-title="Event 1">
-                <img src="image/koncertbilleder/billede1.jpg.avif" alt="Event 1">
-            </a>
-            <a href="image/koncertbilleder/billede2.jpg.avif" data-lightbox="gallery" data-title="Event 2">
-                <img src="image/koncertbilleder/billede2.jpg.avif" alt="Event 2">
-            </a>
-            <a href="image/koncertbilleder/billede3.jpg" data-lightbox="gallery" data-title="Event 3">
-                <img src="image/koncertbilleder/billede3.jpg" alt="Event 3">
-            </a>
-            <a href="image/koncertbilleder/billede4.jpg" data-lightbox="gallery" data-title="Event 4">
-                <img src="image/koncertbilleder/billede4.jpg" alt="Event 4">
-            </a>
-            <a href="image/koncertbilleder/billede5.jpg" data-lightbox="gallery" data-title="Event 5">
-                <img src="image/koncertbilleder/billede5.jpg" alt="Event 5">
-            </a>
+
+        <div class="event">
+            <h3>Øveren</h3>
+            <div class="gallery-container">
+                <a href="image/kbh2024/billede1.jpg" data-lightbox="kbh2024" data-title="Koncert i København">
+                    <img src="image/kbh2024/billede1.jpg" alt="Koncert i København">
+                </a>
+                <a href="image/kbh2024/billede2.jpg" data-lightbox="kbh2024" data-title="Koncert i København">
+                    <img src="image/kbh2024/billede2.jpg" alt="Koncert i København">
+                </a>
+            </div>
+        </div>
+
+        <div class="event">
+            <h3>Rock for Hjemløse Og Socialt Udsatte - 2023</h3>
+            <div class="gallery-container">
+                <a href="image/aarhus2023/billede1.jpg" data-lightbox="aarhus2023" data-title="Festival i Aarhus">
+                    <img src="image/aarhus2023/billede1.jpg" alt="Festival i Aarhus">
+                </a>
+                <a href="image/aarhus2023/billede2.jpg" data-lightbox="aarhus2023" data-title="Festival i Aarhus">
+                    <img src="image/aarhus2023/billede2.jpg" alt="Festival i Aarhus">
+                </a>
+            </div>
+        </div>
+
+        <div class="event">
+            <h3>Div. billeder</h3>
+            <div class="gallery-container">
+                <a href="image/odense2022/billede1.jpg" data-lightbox="odense2022" data-title="Sommerfest Odense">
+                    <img src="image/odense2022/billede1.jpg" alt="Sommerfest Odense">
+                </a>
+                <a href="image/odense2022/billede2.jpg" data-lightbox="odense2022" data-title="Sommerfest Odense">
+                    <img src="image/odense2022/billede2.jpg" alt="Sommerfest Odense">
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-container">
-            <p>&copy; 2024 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
+            <p>&copy; 2025 FlawFiction.dk - Alle rettigheder forbeholdes.</p>
             <ul class="social-media-links">
                 <li><a href="https://www.facebook.com/FlawFiction" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
                 <li><a href="https://www.youtube.com/@flawfiction7309/featured" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
@@ -124,13 +129,6 @@
             'resizeDuration': 200,
             'wrapAround': true,
             'disableScrolling': true
-        });
-
-        // Luk Lightbox når brugeren klikker udenfor billedet
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('lightboxOverlay')) {
-                lightbox.end();
-            }
         });
     </script>
 </body>
