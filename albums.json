@@ -7,13 +7,13 @@
         },
         {
             "name": "Rock for Hjemløse Og Socialt Udsatte - 2023",
-            "folder": "image/Rock for Hjemløse Og Socialt Udsatte - 2023",
-            "images": ["billede1.jpg.avif", "billede2.jpg"]
+            "folder": "image/RockForHjemløse2023",
+            "images": ["billede1.avif", "billede2.jpg"]
         },
         {
             "name": "Div. Billeder",
-            "folder": "image/Div. Billeder",
-            "images": ["image/Div. Billeder/billede2.jpg.avif", "billede3.jpg", "billede5.jpg"]
+            "folder": "image/DivBilleder",
+            "images": ["billede2.avif", "billede3.jpg", "billede5.jpg"]
         }
     ]
 }
