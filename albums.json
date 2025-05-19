@@ -2,18 +2,18 @@
     "albums": [
         {
             "name": "Øveren",
-            "folder": "kbh2024",
-            "images": ["billede1.jpg", "billede2.jpg"]
+            "folder": "image/Øveren",
+            "images": ["billede4.jpg", "billede2.jpg"]
         },
         {
             "name": "Rock for Hjemløse Og Socialt Udsatte - 2023",
-            "folder": "aarhus2023",
-            "images": ["billede1.jpg", "billede2.jpg"]
+            "folder": "image/Rock for Hjemløse Og Socialt Udsatte - 2023",
+            "images": ["billede1.jpg.avif", "billede2.jpg"]
         },
         {
-            "name": "Div. billeder",
-            "folder": "odense2022",
-            "images": ["billede1.jpg", "billede2.jpg"]
+            "name": "Div. Billeder",
+            "folder": "image/Div. Billeder",
+            "images": ["image/Div. Billeder/billede2.jpg.avif", "billede3.jpg", "billede5.jpg"]
         }
     ]
 }
