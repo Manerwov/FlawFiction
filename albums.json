@@ -3,17 +3,17 @@
         {
             "name": "Øveren",
             "folder": "image/Øveren",
-            "images": ["billede4.jpg", "billede2.jpg"]
+            "images": ["image/Øveren/billede4.jpg"]
         },
         {
             "name": "Rock for Hjemløse Og Socialt Udsatte - 2023",
-            "folder": "image/RockForHjemløse2023",
-            "images": ["billede1.avif", "billede2.jpg"]
+            "folder": "image/Rock for Hjemløse Og Socialt Udsatte - 2023",
+            "images": ["image/Rock for Hjemløse Og Socialt Udsatte - 2023/billede1.jpg.avif"]
         },
         {
             "name": "Div. Billeder",
-            "folder": "image/DivBilleder",
-            "images": ["billede2.avif", "billede3.jpg", "billede5.jpg"]
+            "folder": "image/Div. Billeder",
+            "images": ["image/Div. Billeder/billede2.jpg.avif", "image/Div. Billeder/billede3.jpg", "image/Div. Billeder/billede5.jpg"]
         }
     ]
 }
