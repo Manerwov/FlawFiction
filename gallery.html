@@ -100,12 +100,12 @@
 
                     album.images.forEach(image => {
                         let a = document.createElement('a');
-                        a.href = `image/gallery/${album.folder}/${image}`;
+                        a.href = `image/${album.folder}/${image}`;
                         a.setAttribute('data-lightbox', album.folder);
                         a.setAttribute('data-title', album.name);
 
                         let img = document.createElement('img');
-                        img.src = `image/gallery/${album.folder}/${image}`;
+                        img.src = `image/${album.folder}/${image}`;
                         img.alt = album.name;
 
                         a.appendChild(img);
