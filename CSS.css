@@ -5,6 +5,13 @@ body {
   background-color: #000; /* Sort baggrund */
   color: #FFF; /* Hvid tekst */
 }
+body {
+    background-image: url("image/billede bag.jpg"); /* Sti til dit billede */
+    background-size: cover; /* Fylder hele skærmen */
+    background-position: center; /* Centrerer billedet */
+    background-repeat: no-repeat; /* Undgår gentagelse */
+    background-attachment: fixed; /* Holder billedet fast ved scroll */
+}
 
 header {
   display: flex;
@@ -215,5 +222,6 @@ footer .social-media-links li a i {
 .hidden {
     display: none;
 }
+
 
 
