@@ -18,10 +18,14 @@ header {
   justify-content: center; /* Centrerer teksten */
   align-items: center;
   padding: 1px;
-  background-color: #000; /* Sort baggrund for header */
+  background-image: url("image/billede header.jpg"); /* Sti til dit billede */
+  background-size: cover; /* Fylder hele headeren */
+  background-position: center; /* Centrerer billedet */
+  background-repeat: no-repeat; /* Undgår gentagelse */
   color: #FFF; /* Hvid tekst */
-  position: relative; /* Gør det muligt at bruge absolute positioning */
+  position: relative;
 }
+
 
 .header-container {
   position: absolute;
@@ -222,6 +226,7 @@ footer .social-media-links li a i {
 .hidden {
     display: none;
 }
+
 
 
 
