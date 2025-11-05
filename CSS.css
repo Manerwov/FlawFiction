@@ -6,13 +6,21 @@ body {
   color: #FFF; /* Hvid tekst */
 }
 body {
-    background-image: url("image/billede bag.jpg"); /* Sti til dit billede */
-    background-size: cover; /* Fylder hele skærmen */
-    background-position: center; /* Centrerer billedet */
-    background-repeat: no-repeat; /* Undgår gentagelse */
-    background-attachment: fixed; /* Holder billedet fast ved scroll */
+  background-image: url("image/billede bag.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    /* Alternativt: brug et andet billede */
+    /* background-image: url("image/billede_mobil.jpg"); */
+  }
+}
 
 
 header {
@@ -227,6 +235,7 @@ footer .social-media-links li a i {
 .hidden {
     display: none;
 }
+
 
 
 
